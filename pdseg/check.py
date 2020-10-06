@@ -630,8 +630,8 @@ def main(args):
     init_global_variable()
     check_train_dataset()
 
-    init_global_variable()
-    check_val_dataset()
+    # init_global_variable()
+    # check_val_dataset()
 
     init_global_variable()
     check_test_dataset()

@@ -114,12 +114,12 @@ class SegConfig(dict):
         # Ensure file list is use UTF-8 encoding
         train_sets = codecs.open(self.DATASET.TRAIN_FILE_LIST, 'r',
                                  'utf-8').readlines()
-        val_sets = codecs.open(self.DATASET.VAL_FILE_LIST, 'r',
-                               'utf-8').readlines()
+        # val_sets = codecs.open(self.DATASET.VAL_FILE_LIST, 'r',
+        #                        'utf-8').readlines()
         test_sets = codecs.open(self.DATASET.TEST_FILE_LIST, 'r',
                                 'utf-8').readlines()
         self.DATASET.TRAIN_TOTAL_IMAGES = len(train_sets)
-        self.DATASET.VAL_TOTAL_IMAGES = len(val_sets)
+        # self.DATASET.VAL_TOTAL_IMAGES = len(val_sets)
         self.DATASET.TEST_TOTAL_IMAGES = len(test_sets)
 
         if self.MODEL.MODEL_NAME == 'icnet' and \

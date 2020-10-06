@@ -1,10 +1,10 @@
 # 数据集配置
 DATASET:
-    DATA_DIR: "./dataset/optic_disc_seg/"
+    DATA_DIR: "./dataset/baidu_lane/PreliminaryData/"
     NUM_CLASSES: 20
     TEST_FILE_LIST: "./dataset/baidu_lane/PreliminaryData/test.list"
     TRAIN_FILE_LIST: "./dataset/baidu_lane/PreliminaryData/train.list"
-    VIS_FILE_LIST: "./dataset/optic_disc_seg/test_list.txt"
+    VIS_FILE_LIST: "./dataset/baidu_lane/PreliminaryData/test.list"
 
 # 预训练模型配置
 MODEL:
@@ -12,16 +12,18 @@ MODEL:
     DEFAULT_NORM_TYPE: "bn"
 
 # 其他配置
+TRAIN_CROP_SIZE: (1280, 720)
+EVAL_CROP_SIZE: (1280, 720)
 AUG:
     AUG_METHOD: "unpadding"
-    FIX_RESIZE_SIZE: (224, 224)
-BATCH_SIZE: 16
+    FIX_RESIZE_SIZE: (320, 180)
+BATCH_SIZE: 3
 TRAIN:
     PRETRAINED_MODEL_DIR: "./pretrained_model/unet_bn_coco/"
-    MODEL_SAVE_DIR: "./saved_model/unet_baidulane_224x224/"
+    MODEL_SAVE_DIR: "./saved_model/unet_baidulane_320x180/"
     SNAPSHOT_EPOCH: 5
 TEST:
-    TEST_MODEL: "./saved_model/unet_baidulane_224x224/final"
+    TEST_MODEL: "./saved_model/unet_baidulane_320x180/final"
 SOLVER:
     NUM_EPOCHS: 10
     LR: 0.001
