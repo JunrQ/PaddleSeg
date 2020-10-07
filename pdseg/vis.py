@@ -53,6 +53,8 @@ def parse_args():
         help='visual save dir',
         type=str,
         default='visual')
+    parser.add_argument('--width', type=int, default=0)
+    parser.add_argument('--height', type=int, default=0)
     parser.add_argument(
         '--local_test',
         dest='local_test',
@@ -149,9 +151,13 @@ def visualize(cfg,
             valid_shape = (valid_shapes[i, 0], valid_shapes[i, 1])
             res_map = res_map[0:valid_shape[0], 0:valid_shape[1]]
             org_shape = (org_shapes[i, 0], org_shapes[i, 1])
-            res_map = cv2.resize(
-                res_map, (org_shape[1], org_shape[0]),
-                interpolation=cv2.INTER_NEAREST)
+            if args.width == 0 or args.height == 0:
+              res_map = cv2.resize(
+                  res_map, (org_shape[1], org_shape[0]),
+                  interpolation=cv2.INTER_NEAREST)
+            else:
+              res_map = cv2.resize(res_map, (args.width, args.height),
+                                   interpolation=cv2.INTER_NEAREST)
 
             png_fn = to_png_fn(img_name)
 
